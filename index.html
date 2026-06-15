@@ -1328,7 +1328,7 @@
   <div class="video-show-wrap reveal">
     <div class="video-iframe-wrap">
       <iframe
-        src="https://www.youtube.com/embed/wW26FPcQF0w?rel=0&modestbranding=1"
+        src="https://www.youtube.com/embed/ynmSh_TAd_M?rel=0&modestbranding=1"
         title="German Aquino Show en Vivo - Cantante y Animador para Eventos"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen loading="lazy">
@@ -1491,46 +1491,77 @@
   var track = document.getElementById('galeriaTrack');
   var dotsWrap = document.getElementById('galeriaDots');
   if (!track || !dotsWrap) return;
-  var slides = track.children.length, cur = 0, timer, slideW = 0;
+
+  var real = track.children.length;
+  var slideW = 0, cur = 0, timer;
+
+  // Clonar todas las fotos al final — así la transición de última→primera es fluida
+  for (var i = 0; i < real; i++) {
+    track.appendChild(track.children[i].cloneNode(true));
+  }
 
   function calcW(){
     slideW = (track.children[0] ? track.children[0].offsetWidth : 0) + 10;
   }
 
-  for (var i = 0; i < slides; i++) {
+  // Dots solo para fotos reales
+  for (var i = 0; i < real; i++) {
     var d = document.createElement('button');
     d.className = 'galeria-dot' + (i===0 ? ' active' : '');
     d.setAttribute('data-i', String(i));
-    d.onclick = function(){ goTo(parseInt(this.getAttribute('data-i'))); reset(); };
+    d.onclick = (function(idx){ return function(){ snap(idx); reset(); }; })(i);
     dotsWrap.appendChild(d);
   }
 
-  function goTo(n) {
-    if (!slideW) calcW();
-    cur = ((n % slides) + slides) % slides;
-    track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+  function dots(n){
     dotsWrap.querySelectorAll('.galeria-dot').forEach(function(d,i){
-      d.classList.toggle('active', i === cur);
+      d.classList.toggle('active', i === n % real);
     });
   }
 
-  window.galeriaMove = function(dir){ goTo(cur + dir); reset(); };
+  // Mover con transición CSS
+  function move(n){
+    if (!slideW) calcW();
+    cur = n;
+    track.style.transition = '';
+    track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+    dots(cur);
+    // Si estamos en los clones, en cuanto termina la transición volvemos sin animación
+    if (cur >= real) {
+      setTimeout(function(){
+        track.style.transition = 'none';
+        cur = cur - real;
+        track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+        dots(cur);
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){ track.style.transition = ''; });
+        });
+      }, 730);
+    }
+  }
 
-  function tick(){ goTo(cur + 1); }
+  // Salto sin animación (dots, resize)
+  function snap(n){
+    if (!slideW) calcW();
+    cur = ((n % real) + real) % real;
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+    dots(cur);
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ track.style.transition = ''; });
+    });
+  }
+
+  window.galeriaMove = function(dir){
+    move(dir > 0 ? cur + 1 : (cur - 1 + real) % real);
+    reset();
+  };
+
+  function tick(){ move(cur + 1); }
   function reset(){ clearInterval(timer); timer = setInterval(tick, 4000); }
 
-  window.addEventListener('load', function(){
-    calcW();
-    goTo(0);
-    reset();
-  });
-
-  window.addEventListener('resize', function(){
-    calcW();
-    track.style.transition = 'none';
-    goTo(cur);
-    setTimeout(function(){ track.style.transition = ''; }, 50);
-  });
+  window.addEventListener('load', function(){ calcW(); snap(0); reset(); });
+  window.addEventListener('resize', function(){ calcW(); snap(cur); });
 })();
 </script>
 

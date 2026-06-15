@@ -94,8 +94,9 @@
 
   .hero-img {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    top: 0; left: 0; bottom: 0;
+    right: -2px;
+    width: calc(100% + 2px);
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
@@ -339,21 +340,23 @@
   /* ─────────────── FOTO CUERPO COMPLETO + STATS ─────────────── */
   .foto-cuerpo-wrap {
     background: var(--negro2);
+    overflow: hidden;
   }
 
-  /* Foto ancho completo, alto automático = se ve todo el cuerpo sin recorte */
   .foto-cuerpo-inner {
     position: relative;
-    width: 100%;
-    background: var(--negro2);
+    overflow: hidden;
   }
   .foto-cuerpo-inner .foto-frame {
-    width: 100%;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
   }
   .foto-cuerpo-inner img {
-    width: 100%;
-    height: auto;
     display: block;
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
     filter: grayscale(20%) contrast(1.05) brightness(0.92);
   }
   .foto-cuerpo-velo {
@@ -948,24 +951,26 @@
   .galeria-slide { cursor: zoom-in; }
 
   /* ── MOBILE FONT SIZES ── */
-  @media(max-width: 479px) {
-    body { font-size: 15px; }
-    .obra-titulo { font-size: 17px !important; }
-    .obra-rol, .obra-det { font-size: 13px !important; }
-    .form-item-titulo { font-size: 17px !important; }
-    .form-item-det { font-size: 13px !important; }
-    .show-titulo { font-size: 17px !important; }
-    .show-det { font-size: 13px !important; }
-    .aqts-intro { font-size: 15px !important; line-height: 1.8; }
-    .aqts-marca { font-size: 19px !important; }
-    .aqts-cancion { font-size: 13px !important; }
-    .hero-bio { font-size: 14px !important; }
-    .seo-intro { font-size: 14px !important; }
-    .sec-header h2 { font-size: 28px !important; }
-    .stat-num { font-size: 38px !important; }
-    .stat-desc { font-size: 13px !important; }
-    .c-lbl { font-size: 11px !important; }
-    .c-val { font-size: 15px !important; }
+  @media(max-width: 767px) {
+    body { font-size: 16px; }
+    .obra-titulo { font-size: 18px !important; }
+    .obra-rol, .obra-det { font-size: 14px !important; }
+    .form-item-titulo { font-size: 18px !important; }
+    .form-item-det { font-size: 14px !important; }
+    .show-titulo { font-size: 18px !important; }
+    .show-det { font-size: 14px !important; }
+    .aqts-intro { font-size: 16px !important; line-height: 1.9; }
+    .aqts-marca { font-size: 21px !important; }
+    .aqts-cancion { font-size: 14px !important; }
+    .aqts-concepto { font-size: 13px !important; }
+    .hero-bio { font-size: 15px !important; }
+    .seo-intro { font-size: 15px !important; }
+    .sec-header h2 { font-size: 30px !important; }
+    .stat-num { font-size: 42px !important; }
+    .stat-desc { font-size: 14px !important; }
+    .c-lbl { font-size: 12px !important; }
+    .c-val { font-size: 16px !important; }
+    .shows-nota { font-size: 13px !important; }
   }
 </style>
 </head>

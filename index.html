@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +9,41 @@
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <meta name="robots" content="index, follow">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://germanaquino.com.ar/">
+<meta property="og:title" content="Germán Aquino | Cantante, Actor y Bailarín para Eventos y Shows LED">
+<meta property="og:description" content="Artista integral con +10 años de trayectoria. Shows con trajes de luces LED, canto en vivo y animación para eventos corporativos, casamientos y fiestas. Contrataciones vía COSMART.">
+<meta property="og:image" content="https://germanaquino.com.ar/images/ger-aquino-show-en-vivo-flyer-promocional-contrataciones-cosmart.png">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://germanaquino.com.ar/images/ger-aquino-show-en-vivo-flyer-promocional-contrataciones-cosmart.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Germán Aquino — Show en Vivo: Cantante y Animador para Eventos",
+  "description": "Germán Aquino en show en vivo: canto, baile y animación para eventos corporativos, casamientos y fiestas de 15. Contrataciones vía COSMART.",
+  "thumbnailUrl": "https://i.ytimg.com/vi/ynmSh_TAd_M/mqdefault.jpg",
+  "uploadDate": "2026-06-15",
+  "duration": "PT1M11S",
+  "embedUrl": "https://www.youtube.com/embed/ynmSh_TAd_M",
+  "contentUrl": "https://www.youtube.com/shorts/ynmSh_TAd_M",
+  "publisher": {
+    "@type": "Organization",
+    "name": "COSMART",
+    "url": "https://shows.cosmart.com.ar"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Germán Aquino",
+    "url": "https://germanaquino.com.ar"
+  }
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -979,13 +1013,450 @@
     .c-val { font-size: 16px !important; }
     .shows-nota { font-size: 13px !important; }
   }
+
+  /* ─────────────── TOCÁ HINT ─────────────── */
+  .toca-hint {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--marron-suave);
+    opacity: 0.65;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toca-hint::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--marron-suave);
+    opacity: 0.5;
+  }
+
+  /* ─────────────── VIDEO CARDS ─────────────── */
+  .video-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  @media (max-width: 480px) {
+    .video-cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .video-card {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--negro2);
+    transition: opacity 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .video-card:active { opacity: 0.88; }
+
+  .video-card-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .video-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+  }
+
+  .video-card-plat {
+    font-size: 7px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--marron-claro);
+    opacity: 0.85;
+    align-self: flex-start;
+    background: rgba(13,13,13,0.55);
+    padding: 3px 8px;
+    border-radius: 1px;
+  }
+
+  .video-card-play-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-card-play {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(196,168,130,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: var(--marron-suave);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .video-card:hover .video-card-play {
+    border-color: var(--marron-suave);
+    background: rgba(122,92,63,0.22);
+    transform: scale(1.08);
+  }
+
+  .video-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .video-card-titulo {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--beige);
+    line-height: 1.2;
+    flex: 1;
+  }
+
+  .video-card-toca {
+    font-size: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.45);
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: flex-end;
+  }
+
+  .video-card-reel {
+    height: 260px;
+  }
+  .video-card-reel .video-card-play {
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
+  }
+  .video-card-reel .video-card-titulo {
+    font-size: 20px;
+  }
+
+  /* ─────────────── VIDEO MODAL ─────────────── */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(13,13,13,0.96);
+    align-items: center;
+    justify-content: center;
+  }
+  .video-modal.open { display: flex; }
+
+  .video-modal-inner {
+    position: relative;
+    width: min(calc(88vh * 9 / 16), 94vw);
+    height: min(88vh, calc(94vw * 16 / 9));
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    font-size: 28px;
+    color: var(--marron-suave);
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.7;
+    z-index: 1;
+    font-family: sans-serif;
+  }
+  .video-modal-close:hover { opacity: 1; }
+
+  .video-modal-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+  }
+  .video-modal-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ─────────────── SHOWS FOTO CARDS ─────────────── */
+  .shows-foto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 600px) {
+    .shows-foto-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .show-foto-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--negro2);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    aspect-ratio: 4/3;
+  }
+  @media (min-width: 600px) {
+    .show-foto-card { aspect-ratio: 2/3; }
+  }
+
+  .show-foto-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(15%) contrast(1.05) brightness(0.82);
+    transition: transform 0.5s ease, filter 0.4s ease;
+    display: block;
+  }
+  .show-foto-card:hover img {
+    transform: scale(1.04);
+    filter: grayscale(5%) contrast(1.05) brightness(0.88);
+  }
+
+  .show-foto-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.45) 48%, transparent 72%),
+      linear-gradient(to bottom, rgba(13,13,13,0.45) 0%, transparent 28%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px 16px;
+  }
+
+  .show-foto-tag {
+    font-size: 7px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--marron-claro);
+    margin-bottom: 7px;
+    opacity: 0.9;
+  }
+
+  .show-foto-titulo {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--beige);
+    line-height: 1.2;
+    margin-bottom: 7px;
+  }
+
+  .show-foto-det {
+    font-size: 11px;
+    color: rgba(240,235,224,0.5);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .show-foto-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--marron-suave);
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+    padding-bottom: 2px;
+    width: fit-content;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .show-foto-card:hover .show-foto-btn {
+    color: var(--beige);
+    border-color: rgba(240,235,224,0.5);
+  }
+
+  /* ─────────────── AQTS FOTO CARDS (9:16 vertical) ─────────────── */
+  .aqts-foto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 560px;
+    margin-bottom: 28px;
+  }
+
+  .aqts-foto-card {
+    position: relative;
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--negro);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .aqts-foto-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(8%) contrast(1.04) brightness(0.82);
+    display: block;
+    transition: transform 0.45s ease, filter 0.35s ease;
+  }
+  .aqts-foto-card:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(1.04) brightness(0.9);
+  }
+
+  .aqts-foto-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.35) 42%, transparent 65%),
+      linear-gradient(to bottom, rgba(13,13,13,0.4) 0%, transparent 22%);
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .aqts-foto-plat {
+    font-size: 7px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--marron-claro);
+    opacity: 0.85;
+    background: rgba(13,13,13,0.55);
+    padding: 3px 7px;
+    border-radius: 1px;
+    align-self: flex-start;
+  }
+
+  .aqts-foto-play {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aqts-foto-play-ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(196,168,130,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: var(--marron-suave);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .aqts-foto-card:hover .aqts-foto-play-ico {
+    border-color: var(--marron-suave);
+    background: rgba(122,92,63,0.2);
+  }
+
+  .aqts-foto-bottom { }
+
+  .aqts-foto-marca {
+    font-size: 8px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #a2907c;
+    margin-bottom: 5px;
+  }
+
+  .aqts-foto-titulo {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--beige);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .aqts-foto-concepto {
+    font-size: 10px;
+    color: rgba(196,168,130,0.55);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .aqts-foto-toca {
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.4);
+  }
+
+  /* ─────────────── SCROLL HINT (más visible) ─────────────── */
+  .scroll-hint {
+    font-size: 9px !important;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.65) !important;
+  }
+  .scroll-hint::after {
+    content: " ↓";
+    animation: bounceHint 1.6s ease-in-out infinite;
+    display: inline-block;
+    margin-left: 2px;
+  }
+  @keyframes bounceHint {
+    0%, 100% { transform: translateY(0); opacity: 0.65; }
+    50% { transform: translateY(4px); opacity: 1; }
+  }
+
+  /* ─────────────── SHOWS SUBTÍTULO ─────────────── */
+  .shows-subtitulo {
+    font-size: 9px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--marron-suave);
+    opacity: 0.7;
+    margin: 32px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .shows-subtitulo::before,
+  .shows-subtitulo::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--marron-suave-dim);
+  }
+
+  /* ─────────────── BTN SHOWS (nuevo estilo visual) ─────────────── */
+  .btn-shows {
+    border: 1px solid var(--marron-suave) !important;
+    background: transparent !important;
+    color: var(--marron-suave) !important;
+    transition: background 0.25s, color 0.25s !important;
+  }
+  .btn-shows:hover, .btn-shows:active {
+    background: rgba(122,92,63,0.18) !important;
+    color: var(--beige) !important;
+    border-color: var(--beige) !important;
+  }
 </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero">
-  <img class="hero-img" src="images/hero.jpeg" alt="Germán Aquino cantante actor y bailarín para eventos y shows" />
+  <img class="hero-img" src="images/hero.webp" alt="Germán Aquino cantante actor y bailarín para eventos y shows" />
   <div class="hero-velo"></div>
 
   <div class="hero-top">
@@ -1177,7 +1648,7 @@
 <!-- ═══════════════════════════════ FOTO 2 + STATS ═══════════════════════════════ -->
 <div class="foto-cuerpo-wrap">
   <div class="foto-cuerpo-inner">
-    <div class="foto-frame"><img src="images/foto-cuerpo.jpeg" alt="Germán Aquino artista integral - cantante actor bailarín" /></div>
+    <div class="foto-frame"><img src="images/foto-cuerpo.webp" alt="Germán Aquino artista integral - cantante actor bailarín" /></div>
     <div class="foto-cuerpo-velo"></div>
   </div>
   <div class="foto-cuerpo-stats">
@@ -1212,79 +1683,97 @@
     <div class="sec-linea"></div>
   </div>
 
+  <p class="toca-hint reveal">Tocá cada clip para verlo</p>
+
   <!-- CANTO -->
   <div class="video-cat reveal">
     <div class="video-cat-titulo">Canto</div>
-    <div class="video-links">
-      <a class="video-link" href="https://www.instagram.com/reel/DOjORPjjYdz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Cover "Ángel" — Jon Secada</div>
-          <div class="video-link-plat">Instagram</div>
+    <div class="video-cards-grid">
+      <div class="video-card" onclick="window.open('https://www.instagram.com/reel/DOjORPjjYdz/', '_blank')">
+        <div class="video-card-bg" style="background:radial-gradient(ellipse at 35% 65%, rgba(122,92,63,0.38) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(26,18,12,0.88) 100%)"></div>
+        <div class="video-card-overlay">
+          <div class="video-card-plat">Instagram</div>
+          <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+          <div class="video-card-bottom">
+            <div class="video-card-titulo">Cover "Ángel"<br>Jon Secada</div>
+            <div class="video-card-toca">Ver en Instagram ↗</div>
+          </div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
-      <a class="video-link" href="https://www.instagram.com/reel/Cx9EPH8udM0/?igsh=MXQydjdoOWpkcXF0Zg==" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Fragmento "El Jorobado de París"</div>
-          <div class="video-link-plat">Instagram · Pepe Cibrián</div>
+      </div>
+      <div class="video-card" onclick="window.open('https://www.instagram.com/reel/Cx9EPH8udM0/', '_blank')">
+        <div class="video-card-bg" style="background:radial-gradient(ellipse at 68% 42%, rgba(122,92,63,0.32) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(20,14,9,0.88) 100%)"></div>
+        <div class="video-card-overlay">
+          <div class="video-card-plat">Instagram · Pepe Cibrián</div>
+          <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+          <div class="video-card-bottom">
+            <div class="video-card-titulo">El Jorobado<br>de París</div>
+            <div class="video-card-toca">Tocá para ver</div>
+          </div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
+      </div>
     </div>
   </div>
 
   <!-- BAILE -->
   <div class="video-cat reveal">
     <div class="video-cat-titulo">Baile</div>
-    <div class="video-links">
-      <a class="video-link" href="https://www.instagram.com/reel/C9Q5xfbMEEt/?igsh=MWtkMm1xYjRsNjlmaQ==" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Estilos variados</div>
-          <div class="video-link-plat">Instagram</div>
+    <div class="video-cards-grid">
+      <div class="video-card" onclick="window.open('https://www.instagram.com/reel/C9Q5xfbMEEt/', '_blank')">
+        <div class="video-card-bg" style="background:radial-gradient(ellipse at 50% 70%, rgba(100,72,44,0.38) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(18,13,9,0.88) 100%)"></div>
+        <div class="video-card-overlay">
+          <div class="video-card-plat">Instagram</div>
+          <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+          <div class="video-card-bottom">
+            <div class="video-card-titulo">Estilos variados</div>
+            <div class="video-card-toca">Tocá para ver</div>
+          </div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
-      <a class="video-link" href="https://vt.tiktok.com/ZSH3NwYeG/" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Poppin · Hip Hop</div>
-          <div class="video-link-plat">TikTok</div>
+      </div>
+      <div class="video-card" onclick="window.open('https://vt.tiktok.com/ZSH3NwYeG/', '_blank')">
+        <div class="video-card-bg" style="background:radial-gradient(ellipse at 30% 50%, rgba(80,58,36,0.42) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(15,11,7,0.88) 100%)"></div>
+        <div class="video-card-overlay">
+          <div class="video-card-plat">TikTok</div>
+          <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+          <div class="video-card-bottom">
+            <div class="video-card-titulo">Poppin · Hip Hop</div>
+            <div class="video-card-toca">Ver en TikTok ↗</div>
+          </div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
+      </div>
     </div>
   </div>
 
   <!-- ACTUACIÓN -->
   <div class="video-cat reveal">
     <div class="video-cat-titulo">Actuación</div>
-    <div class="video-links">
-      <a class="video-link" href="https://vt.tiktok.com/ZSH3FMt1Q/" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Fragmento actuación</div>
-          <div class="video-link-plat">TikTok</div>
+    <div class="video-cards-grid">
+      <div class="video-card" onclick="window.open('https://vt.tiktok.com/ZSH3FMt1Q/', '_blank')">
+        <div class="video-card-bg" style="background:radial-gradient(ellipse at 60% 55%, rgba(122,92,63,0.32) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(20,14,9,0.88) 100%)"></div>
+        <div class="video-card-overlay">
+          <div class="video-card-plat">TikTok</div>
+          <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+          <div class="video-card-bottom">
+            <div class="video-card-titulo">Fragmento actuación</div>
+            <div class="video-card-toca">Ver en TikTok ↗</div>
+          </div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
+      </div>
     </div>
   </div>
 
   <!-- REEL COMPLETO -->
   <div class="video-reel-completo reveal">
     <div class="video-cat-titulo">Reel artístico completo</div>
-    <div class="video-links">
-      <a class="video-link destacado" href="https://www.instagram.com/reel/DVOoBXmDeE2/?igsh=MWdpdGF3NzFlMWhjcQ==" target="_blank">
-        <div class="video-link-ico">▷</div>
-        <div class="video-link-info">
-          <div class="video-link-titulo">Canto · Danza · Actuación</div>
-          <div class="video-link-plat">Instagram · Reel completo</div>
+    <div class="video-card video-card-reel" onclick="window.open('https://www.instagram.com/reel/DVOoBXmDeE2/', '_blank')">
+      <div class="video-card-bg" style="background:radial-gradient(ellipse at 40% 60%, rgba(160,120,80,0.38) 0%, transparent 62%), radial-gradient(ellipse at 75% 30%, rgba(122,92,63,0.2) 0%, transparent 55%), linear-gradient(140deg, rgba(13,13,13,0.94) 0%, rgba(26,18,10,0.84) 100%)"></div>
+      <div class="video-card-overlay">
+        <div class="video-card-plat">Instagram · Reel completo</div>
+        <div class="video-card-play-wrap"><div class="video-card-play">▷</div></div>
+        <div class="video-card-bottom">
+          <div class="video-card-titulo">Canto · Danza · Actuación</div>
+          <div class="video-card-toca">Tocá para ver</div>
         </div>
-        <div class="video-link-arrow">↗</div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
@@ -1295,23 +1784,23 @@
 <!-- GALERIA -->
 <section class="galeria-sec">
   <div class="sec-header reveal">
-    <span class="sec-num">03</span>
+    <span class="sec-num">04</span>
     <h2>Galería</h2>
     <div class="sec-linea"></div>
   </div>
   <div class="galeria-wrap">
     <div class="galeria-track-outer">
       <div class="galeria-track" id="galeriaTrack">
-      <div class="galeria-slide"><img src="images/ger cantando en evento corporativo.png" alt="German Aquino en evento corporativo" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/IMG_3460 Cuadrada.jpg" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/ger cantando en fiesta de 15 años 1 .png" alt="German Aquino show fiesta" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/IMG_3421 Story.jpg" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/IMG_3395.jpg" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/IMG_3232 2.jpg" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/IMG_3246 1.jpg" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/1.png" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/1V.png" alt="German Aquino" loading="lazy"></div>
-      <div class="galeria-slide"><img src="images/3.png" alt="German Aquino" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/ger cantando en evento corporativo.webp" alt="Germán Aquino cantando en evento corporativo — show en vivo para empresas" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/IMG_3460 Cuadrada.webp" alt="Germán Aquino — foto artística en estudio" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/ger cantando en fiesta de 15 años 1 .webp" alt="Germán Aquino cantando en fiesta de 15 años — show animación y canto en vivo" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/IMG_3421 Story.webp" alt="Germán Aquino — retrato artístico" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/IMG_3395.webp" alt="Germán Aquino cantante actor y bailarín — producción fotográfica" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/IMG_3232 2.webp" alt="Germán Aquino — foto de producción artística" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/IMG_3246 1.webp" alt="Germán Aquino — sesión fotográfica artista integral" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/1.webp" alt="Germán Aquino — foto horizontal producción artística" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/1V.webp" alt="Germán Aquino — foto vertical producción artística" loading="lazy"></div>
+      <div class="galeria-slide"><img src="images/3.webp" alt="Germán Aquino cantante — foto artística en blanco y negro" loading="lazy"></div>
       </div>
     </div>
     <div class="galeria-nav">
@@ -1327,7 +1816,7 @@
 <!-- ══════════════════════════ SHOWS PARA EVENTOS ══════════════════════════ -->
 <div class="shows-sec">
   <div class="sec-header reveal">
-    <span class="sec-num">04</span>
+    <span class="sec-num">05</span>
     <h2>Shows para Eventos Corporativos, Casamientos y Fiestas</h2>
     <div class="sec-linea"></div>
   </div>
@@ -1371,8 +1860,40 @@
     </div>
   </div>
 
+  <p class="shows-subtitulo reveal">Shows disponibles para contratación</p>
+
+  <div class="shows-foto-grid reveal">
+    <a class="show-foto-card" href="https://shows.cosmart.com.ar" target="_blank">
+      <img src="images/depredador-led-show-luces-german-aquino.webp" alt="Show Depredador LED de Germán Aquino — espectáculo con trajes de luces para eventos" loading="lazy">
+      <div class="show-foto-overlay">
+        <div class="show-foto-tag">Show Signature</div>
+        <div class="show-foto-titulo">Depredador LED</div>
+        <div class="show-foto-det">Espectáculo con trajes de luces de alto impacto visual</div>
+        <div class="show-foto-btn">Mirá más ↗</div>
+      </div>
+    </a>
+    <a class="show-foto-card" href="https://shows.cosmart.com.ar" target="_blank">
+      <img src="images/Bailarin-traje-luces-para-shows-fiestas-casamientos-eventos-german-aquino.webp" alt="Germán Aquino bailarín con traje de luces LED para shows, fiestas y eventos" loading="lazy">
+      <div class="show-foto-overlay">
+        <div class="show-foto-tag">Danza & Luces</div>
+        <div class="show-foto-titulo">Trajes de Luces</div>
+        <div class="show-foto-det">Danza y performance con vestuario LED en vivo</div>
+        <div class="show-foto-btn">Mirá más ↗</div>
+      </div>
+    </a>
+    <a class="show-foto-card" href="https://shows.cosmart.com.ar" target="_blank">
+      <img src="images/Cantante-para-shows-eventos-fiestas-show-en-vivo-german-aquino.webp" alt="Germán Aquino cantante en show en vivo para eventos y fiestas" loading="lazy">
+      <div class="show-foto-overlay">
+        <div class="show-foto-tag">Canto en Vivo</div>
+        <div class="show-foto-titulo">Show en Vivo</div>
+        <div class="show-foto-det">Canto en vivo para eventos, casamientos y corporativos</div>
+        <div class="show-foto-btn">Mirá más ↗</div>
+      </div>
+    </a>
+  </div>
+
   <a href="https://shows.cosmart.com.ar" target="_blank" class="btn-shows reveal">
-    Ver todos los shows y contratar →
+    Mirá más sobre los shows →
   </a>
 
   <p class="shows-nota reveal">
@@ -1385,7 +1906,7 @@
 <!-- ═══════════════════════════ A QUE TE SUENA ═══════════════════════════ -->
 <div class="aqts-sec">
   <div class="sec-header reveal">
-    <span class="sec-num">05</span>
+    <span class="sec-num">06</span>
     <h2>A qué te suena — Branded content musical para marcas</h2>
     <div class="sec-linea"></div>
   </div>
@@ -1396,38 +1917,32 @@
     convertida en canción. Ideal para marcas que buscan conectar con su audiencia a través de contenido musical auténtico en redes sociales, eventos de lanzamiento y campañas digitales.
   </p>
 
-  <div class="aqts-casos">
+  <div class="aqts-foto-grid reveal">
 
-    <a class="aqts-caso reveal" href="https://vt.tiktok.com/ZSH3j89kq/" target="_blank">
-      <div class="aqts-marca-wrap"></div>
-      <div class="aqts-body">
-        <div class="aqts-info">
-          <div class="aqts-marca">Simmons</div>
-          <div class="aqts-cancion">El descanso como ritual</div>
-          <div class="aqts-concepto">
-            Confort · Hogar · Bienestar cotidiano
-          </div>
-        </div>
-        <div class="aqts-play">
-          <div class="aqts-play-ico">▷</div>
-          <div class="aqts-play-lbl">TikTok</div>
+    <a class="aqts-foto-card" href="https://vt.tiktok.com/ZSH3j89kq/" target="_blank">
+      <img src="images/colaboracion-simmons-german-aquino.webp" alt="Germán Aquino — colaboración branded content musical con Simmons, canción El descanso como ritual" loading="lazy">
+      <div class="aqts-foto-overlay">
+        <div class="aqts-foto-plat">TikTok</div>
+        <div class="aqts-foto-play"><div class="aqts-foto-play-ico">▷</div></div>
+        <div class="aqts-foto-bottom">
+          <div class="aqts-foto-marca">Simmons</div>
+          <div class="aqts-foto-titulo">El descanso como ritual</div>
+          <div class="aqts-foto-concepto">Confort · Hogar · Bienestar cotidiano</div>
+          <div class="aqts-foto-toca">Ver en TikTok ↗</div>
         </div>
       </div>
     </a>
 
-    <a class="aqts-caso reveal" href="https://vt.tiktok.com/ZSH3j8CEB/" target="_blank">
-      <div class="aqts-marca-wrap"></div>
-      <div class="aqts-body">
-        <div class="aqts-info">
-          <div class="aqts-marca">Samsonite</div>
-          <div class="aqts-cancion">La libertad de partir</div>
-          <div class="aqts-concepto">
-            Aventura · Identidad · El viaje como forma de vida
-          </div>
-        </div>
-        <div class="aqts-play">
-          <div class="aqts-play-ico">▷</div>
-          <div class="aqts-play-lbl">TikTok</div>
+    <a class="aqts-foto-card" href="https://vt.tiktok.com/ZSH3j8CEB/" target="_blank">
+      <img src="images/colaboracion-samsonite-german-aquino.webp" alt="Germán Aquino — colaboración branded content musical con Samsonite, canción La libertad de partir" loading="lazy">
+      <div class="aqts-foto-overlay">
+        <div class="aqts-foto-plat">TikTok</div>
+        <div class="aqts-foto-play"><div class="aqts-foto-play-ico">▷</div></div>
+        <div class="aqts-foto-bottom">
+          <div class="aqts-foto-marca">Samsonite</div>
+          <div class="aqts-foto-titulo">La libertad de partir</div>
+          <div class="aqts-foto-concepto">Aventura · Identidad · El viaje como forma de vida</div>
+          <div class="aqts-foto-toca">Ver en TikTok ↗</div>
         </div>
       </div>
     </a>
@@ -1596,5 +2111,6 @@
   }
   document.addEventListener('keydown', function(e){ if(e.key==="Escape") document.getElementById('lightbox').classList.remove('open'); });
 </script>
+
 </body>
 </html>

@@ -6,6 +6,8 @@
 <title>German Aquino | Cantante, Actor y Bailarín para Eventos y Shows con Luces LED</title>
 <meta name="description" content="German Aquino: artista integral con +10 años de trayectoria en canto, danza y actuación. Shows con trajes de luces LED, animación y espectáculos para eventos corporativos, casamientos y fiestas de 15. Cotiza tu show por COSMART.">
 <link rel="canonical" href="https://germanaquino.com.ar/">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 <meta name="robots" content="index, follow">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -70,8 +72,16 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; overflow-x: hidden; }
-  body { overflow-x: hidden; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scrollbar-color: #7a5c3f #0d0d0d;
+    scrollbar-width: thin;
+  }
+  body { overflow-x: hidden; background: var(--negro); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0d0d0d; }
+  ::-webkit-scrollbar-thumb { background: #7a5c3f; border-radius: 3px; }
 
   body {
     background: var(--negro);
@@ -340,23 +350,20 @@
   /* ─────────────── FOTO CUERPO COMPLETO + STATS ─────────────── */
   .foto-cuerpo-wrap {
     background: var(--negro2);
-    overflow: hidden;
   }
 
   .foto-cuerpo-inner {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    background: var(--negro2);
   }
   .foto-cuerpo-inner .foto-frame {
-    overflow: hidden;
-    font-size: 0;
-    line-height: 0;
+    width: 100%;
   }
   .foto-cuerpo-inner img {
-    display: block;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
     height: auto;
+    display: block;
     filter: grayscale(20%) contrast(1.05) brightness(0.92);
   }
   .foto-cuerpo-velo {

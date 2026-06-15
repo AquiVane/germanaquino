@@ -70,7 +70,8 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
 
   body {
     background: var(--negro);
@@ -864,14 +865,15 @@
     will-change: transform;
   }
   .galeria-slide {
-    flex: 0 0 80vw;
-    height: 70vw;
+    flex: 0 0 68vw;
+    aspect-ratio: 4/5;
+    height: auto;
     overflow: hidden;
     position: relative;
     border-radius: 2px;
   }
   @media(min-width: 480px) {
-    .galeria-slide { flex: 0 0 260px; height: 360px; }
+    .galeria-slide { flex: 0 0 240px; height: 300px; aspect-ratio: unset; }
   }
   .galeria-slide img {
     width: 100%;
@@ -944,6 +946,27 @@
   }
   .lightbox-close:hover { opacity: 1; }
   .galeria-slide { cursor: zoom-in; }
+
+  /* ── MOBILE FONT SIZES ── */
+  @media(max-width: 479px) {
+    body { font-size: 15px; }
+    .obra-titulo { font-size: 17px !important; }
+    .obra-rol, .obra-det { font-size: 13px !important; }
+    .form-item-titulo { font-size: 17px !important; }
+    .form-item-det { font-size: 13px !important; }
+    .show-titulo { font-size: 17px !important; }
+    .show-det { font-size: 13px !important; }
+    .aqts-intro { font-size: 15px !important; line-height: 1.8; }
+    .aqts-marca { font-size: 19px !important; }
+    .aqts-cancion { font-size: 13px !important; }
+    .hero-bio { font-size: 14px !important; }
+    .seo-intro { font-size: 14px !important; }
+    .sec-header h2 { font-size: 28px !important; }
+    .stat-num { font-size: 38px !important; }
+    .stat-desc { font-size: 13px !important; }
+    .c-lbl { font-size: 11px !important; }
+    .c-val { font-size: 15px !important; }
+  }
 </style>
 </head>
 <body>
@@ -977,7 +1000,7 @@
 
 <!-- ═══════════════════════════════ EXPERIENCIA ═══════════════════════════════ -->
 <section class="seccion">
-  <p class="seo-intro reveal" style="padding:0 24px 32px;font-size:14px;line-height:1.8;color:var(--beige-dim);max-width:640px;margin:0 auto;">
+  <p class="seo-intro reveal" style="padding-bottom:32px;font-size:14px;line-height:1.8;color:var(--beige-dim);">
     Germán Aquino es un artista integral con más de 10 años de trayectoria en el mundo del entretenimiento. Formado en canto, danza y actuación, ha protagonizado musicales de envergadura nacional e internacional junto a directores de la talla de Pepe Cibrián. Su versatilidad lo posiciona como una figura única en Argentina para shows de eventos, animación profesional y producciones artísticas de alto impacto.
   </p>
   <div class="sec-header reveal">
@@ -1465,14 +1488,13 @@
 
 <script>
 (function(){
-  var outer = document.querySelector('.galeria-track-outer');
   var track = document.getElementById('galeriaTrack');
   var dotsWrap = document.getElementById('galeriaDots');
-  if (!track || !outer) return;
-  var slides = track.children.length, cur = 0, timer;
+  if (!track || !dotsWrap) return;
+  var slides = track.children.length, cur = 0, timer, slideW = 0;
 
-  function getSlideW(){
-    return track.children[0].getBoundingClientRect().width + 10;
+  function calcW(){
+    slideW = (track.children[0] ? track.children[0].offsetWidth : 0) + 10;
   }
 
   for (var i = 0; i < slides; i++) {
@@ -1484,16 +1506,31 @@
   }
 
   function goTo(n) {
+    if (!slideW) calcW();
     cur = ((n % slides) + slides) % slides;
-    track.style.transform = 'translateX(-' + (cur * getSlideW()) + 'px)';
-    dotsWrap.querySelectorAll('.galeria-dot').forEach(function(d,i){ d.classList.toggle('active', i===cur); });
+    track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+    dotsWrap.querySelectorAll('.galeria-dot').forEach(function(d,i){
+      d.classList.toggle('active', i === cur);
+    });
   }
 
   window.galeriaMove = function(dir){ goTo(cur + dir); reset(); };
 
-  function reset(){ clearInterval(timer); timer = setInterval(function(){ goTo(cur + 1); }, 5000); }
+  function tick(){ goTo(cur + 1); }
+  function reset(){ clearInterval(timer); timer = setInterval(tick, 4000); }
 
-  window.addEventListener('load', function(){ goTo(0); reset(); });
+  window.addEventListener('load', function(){
+    calcW();
+    goTo(0);
+    reset();
+  });
+
+  window.addEventListener('resize', function(){
+    calcW();
+    track.style.transition = 'none';
+    goTo(cur);
+    setTimeout(function(){ track.style.transition = ''; }, 50);
+  });
 })();
 </script>
 

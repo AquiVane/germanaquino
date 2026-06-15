@@ -3,8 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Germán Aquino — CV Artístico</title>
+<title>German Aquino | Cantante, Actor y Bailarín para Eventos y Shows con Luces LED</title>
+<meta name="description" content="German Aquino: artista integral con +10 años de trayectoria en canto, danza y actuación. Shows con trajes de luces LED, animación y espectáculos para eventos corporativos, casamientos y fiestas de 15. Cotiza tu show por COSMART.">
+<link rel="canonical" href="https://germanaquino.com.ar/">
+<meta name="robots" content="index, follow">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "German Aquino",
+  "jobTitle": "Cantante, Actor y Bailarín",
+  "description": "Artista integral con más de 10 años de trayectoria en canto, danza y actuación. Shows con trajes de luces LED para eventos corporativos, casamientos y fiestas de 15.",
+  "url": "https://germanaquino.com.ar",
+  "image": "https://germanaquino.com.ar/images/hero.jpeg",
+  "sameAs": [
+    "https://www.instagram.com/akinogerman"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "COSMART",
+    "url": "https://shows.cosmart.com.ar"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Shows y Espectáculos",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Show con Trajes de Luces LED",
+          "description": "Espectáculo de alto impacto con trajes de luces LED para eventos corporativos, casamientos y fiestas privadas."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Animación para Eventos Corporativos",
+          "description": "Cantante y animador para eventos corporativos, galas, lanzamientos de productos y cenas de empresa."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Show para Casamientos y Fiestas de 15",
+          "description": "Espectáculo musical y de baile para casamientos, fiestas de 15 años y celebraciones privadas."
+        }
+      }
+    ]
+  }
+}
+</script>
 <style>
   :root {
     --negro: #0d0d0d;
@@ -812,11 +864,14 @@
     will-change: transform;
   }
   .galeria-slide {
-    flex: 0 0 200px;
-    height: 300px;
+    flex: 0 0 80vw;
+    height: 70vw;
     overflow: hidden;
     position: relative;
     border-radius: 2px;
+  }
+  @media(min-width: 480px) {
+    .galeria-slide { flex: 0 0 260px; height: 360px; }
   }
   .galeria-slide img {
     width: 100%;
@@ -860,13 +915,13 @@
     cursor: pointer; transition: opacity 0.3s, transform 0.3s; border: none;
   }
   .galeria-dot.active { opacity: 1; transform: scale(1.5); }
-  @media(min-width:768px) {
-    .galeria-slide { flex: 0 0 240px; height: 360px; }
-  }
   /* VIDEO EMBED */
-  .video-show-wrap { display: flex; justify-content: center; padding: 0 24px 40px; }
-  .video-iframe-wrap { position: relative; width: 100%; max-width: 340px; aspect-ratio: 9/16; border-radius: 4px; overflow: hidden; background: #000; }
+  .video-show-wrap { display: flex; justify-content: center; padding: 0 0 40px; }
+  .video-iframe-wrap { position: relative; width: 100%; max-width: 480px; aspect-ratio: 9/16; border-radius: 4px; overflow: hidden; background: #000; }
   .video-iframe-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  @media(max-width: 520px) {
+    .video-iframe-wrap { max-width: 100%; border-radius: 0; }
+  }
 
   /* LIGHTBOX */
   .lightbox {
@@ -895,7 +950,7 @@
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero">
-  <img class="hero-img" src="images/hero.jpeg" alt="Germán Aquino" />
+  <img class="hero-img" src="images/hero.jpeg" alt="Germán Aquino cantante actor y bailarín para eventos y shows" />
   <div class="hero-velo"></div>
 
   <div class="hero-top">
@@ -906,7 +961,7 @@
   </div>
 
   <div class="hero-bottom">
-    <div class="hero-nombre">Germán<br><em>Aquino</em></div>
+    <h1 class="hero-nombre">Germán<br><em>Aquino</em></h1>
     <div class="hero-trio">
       <span>Cantante</span><span class="dot"></span>
       <span>Actor</span><span class="dot"></span>
@@ -922,9 +977,12 @@
 
 <!-- ═══════════════════════════════ EXPERIENCIA ═══════════════════════════════ -->
 <section class="seccion">
+  <p class="seo-intro reveal" style="padding:0 24px 32px;font-size:14px;line-height:1.8;color:var(--beige-dim);max-width:640px;margin:0 auto;">
+    Germán Aquino es un artista integral con más de 10 años de trayectoria en el mundo del entretenimiento. Formado en canto, danza y actuación, ha protagonizado musicales de envergadura nacional e internacional junto a directores de la talla de Pepe Cibrián. Su versatilidad lo posiciona como una figura única en Argentina para shows de eventos, animación profesional y producciones artísticas de alto impacto.
+  </p>
   <div class="sec-header reveal">
     <span class="sec-num">01</span>
-    <h2>Experiencia</h2>
+    <h2>Trayectoria artística: musicales y obras destacadas</h2>
     <div class="sec-linea"></div>
   </div>
 
@@ -1084,7 +1142,7 @@
 <!-- ═══════════════════════════════ FOTO 2 + STATS ═══════════════════════════════ -->
 <div class="foto-cuerpo-wrap">
   <div class="foto-cuerpo-inner">
-    <div class="foto-frame"><img src="images/foto-cuerpo.jpeg" alt="Germán Aquino — cuerpo completo" /></div>
+    <div class="foto-frame"><img src="images/foto-cuerpo.jpeg" alt="Germán Aquino artista integral - cantante actor bailarín" /></div>
     <div class="foto-cuerpo-velo"></div>
   </div>
   <div class="foto-cuerpo-stats">
@@ -1235,33 +1293,48 @@
 <div class="shows-sec">
   <div class="sec-header reveal">
     <span class="sec-num">04</span>
-    <h2>Shows para Eventos</h2>
+    <h2>Shows para Eventos Corporativos, Casamientos y Fiestas</h2>
     <div class="sec-linea"></div>
   </div>
 
   <p class="aqts-intro reveal" style="margin-bottom:32px;">
-    Propuestas de alto impacto para eventos sociales y corporativos.
-    Desde galas íntimas hasta grandes celebraciones — cada show diseñado
-    para dejar huella en el público.
+    Propuestas de alto impacto para eventos sociales y corporativos: <strong>shows con trajes de luces LED</strong>, animación para eventos corporativos, casamientos y fiestas de 15. Germán combina canto en vivo, danza y actuación en espectáculos diseñados para sorprender. Cada show se adapta al evento — desde galas íntimas hasta grandes celebraciones.
   </p>
 
-  
   <!-- VIDEO SHOW EN VIVO -->
   <div class="video-show-wrap reveal">
     <div class="video-iframe-wrap">
       <iframe
         src="https://www.youtube.com/embed/wW26FPcQF0w?rel=0&modestbranding=1"
-        title="German Aquino Show en Vivo"
+        title="German Aquino Show en Vivo - Cantante y Animador para Eventos"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen loading="lazy">
       </iframe>
     </div>
   </div>
-      <div class="video-yt-label">Ver show completo en YouTube</div>
-    </a>
+
+  <div class="shows-grid">
+    <div class="show-card reveal">
+      <div class="show-ico">✦</div>
+      <div class="show-titulo">Show con Trajes de Luces LED</div>
+      <div class="show-det">Espectáculo de alto impacto visual · Ideal para corporativos, galas y grandes eventos</div>
+    </div>
+    <div class="show-card reveal">
+      <div class="show-ico">🎤</div>
+      <div class="show-titulo">Canto en Vivo</div>
+      <div class="show-det">Repertorio pop, rock y musical · Covers y temas originales · A capella o con pista</div>
+    </div>
+    <div class="show-card reveal">
+      <div class="show-ico">💍</div>
+      <div class="show-titulo">Casamientos y Fiestas de 15</div>
+      <div class="show-det">Shows personalizados para celebraciones íntimas y grandes fiestas · Sorpresa o programado</div>
+    </div>
+    <div class="show-card reveal">
+      <div class="show-ico">🏢</div>
+      <div class="show-titulo">Eventos Corporativos</div>
+      <div class="show-det">Animación profesional para cenas de empresa, lanzamientos y galas · Conductor incluido</div>
+    </div>
   </div>
-
-
 
   <a href="https://shows.cosmart.com.ar" target="_blank" class="btn-shows reveal">
     Ver todos los shows y contratar →
@@ -1278,14 +1351,14 @@
 <div class="aqts-sec">
   <div class="sec-header reveal">
     <span class="sec-num">05</span>
-    <h2>A que te suena</h2>
+    <h2>A qué te suena — Branded content musical para marcas</h2>
     <div class="sec-linea"></div>
   </div>
 
   <p class="aqts-intro reveal">
     Una propuesta de contenido branded donde una marca comparte su esencia
     y Germán la traduce en música. No es jingle — es la <strong>emoción que el producto despierta</strong>,
-    convertida en canción.
+    convertida en canción. Ideal para marcas que buscan conectar con su audiencia a través de contenido musical auténtico en redes sociales, eventos de lanzamiento y campañas digitales.
   </p>
 
   <div class="aqts-casos">

@@ -52,4 +52,26 @@
     <priority>0.8</priority>
   </url>
 
+
+  <url>
+    <loc>https://germanaquino.com.ar/a-que-te-suena</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://germanaquino.com.ar/representacion-artistica</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://germanaquino.com.ar/clases-canto-actuacion-danza</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

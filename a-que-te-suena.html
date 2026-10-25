@@ -395,7 +395,7 @@
     Dos marcas con esencias completamente distintas. Para cada una, Germán encontró la canción que conectaba con lo que vendían — la cantó, la grabó en video, y ese fue el contenido que las marcas publicaron en sus redes.
   </p>
   <div class="casos-grid reveal">
-    <a class="caso-card" href="https://vt.tiktok.com/ZSH3j89kq/" target="_blank">
+    <a class="caso-card" href="https://vt.tiktok.com/ZSH3j89kq/" data-video="https://vt.tiktok.com/ZSH3j89kq/" data-tiktok="7610620046540377365" target="_blank" rel="noopener">
       <img src="images/colaboracion-simmons-german-aquino.webp"
            alt="Germán Aquino — canción original para Simmons, branded content musical El descanso como ritual">
       <div class="caso-overlay">
@@ -405,7 +405,7 @@
         <span class="caso-link">Ver en TikTok →</span>
       </div>
     </a>
-    <a class="caso-card" href="https://vt.tiktok.com/ZSH3j8CEB/" target="_blank">
+    <a class="caso-card" href="https://vt.tiktok.com/ZSH3j8CEB/" data-video="https://vt.tiktok.com/ZSH3j8CEB/" data-tiktok="7613090152780451092" target="_blank" rel="noopener">
       <img src="images/colaboracion-samsonite-german-aquino.webp"
            alt="Germán Aquino — canción original para Samsonite, branded content musical La libertad de partir">
       <div class="caso-overlay">
@@ -490,6 +490,42 @@
     });
   }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<style>
+.vmodal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:rgba(0,0,0,.88);padding:16px}
+.vmodal.open{display:flex}
+.vmodal-box{width:min(100%,380px);height:min(78vh,680px);background:#000;border-radius:14px;overflow:hidden}
+.vmodal-box iframe{width:100%;height:100%;border:0;background:#000}
+.vmodal-x{position:absolute;top:12px;right:16px;background:none;border:0;color:#fff;font-size:36px;line-height:1;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+.vmodal-ext{color:#fff;font-size:14px;text-decoration:underline}
+</style>
+
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Video">
+  <button class="vmodal-x" id="vmodalX" aria-label="Cerrar video">&times;</button>
+  <div class="vmodal-box"><iframe id="vmodalF" title="Video de Germán Aquino" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+  <a class="vmodal-ext" id="vmodalL" href="#" target="_blank" rel="noopener">Abrir en la app ↗</a>
+</div>
+<script>
+(function(){
+  var m=document.getElementById('vmodal'),f=document.getElementById('vmodalF'),l=document.getElementById('vmodalL');
+  function open(src,ext,name){f.src=src;l.href=ext;l.textContent='Abrir en '+name+' ↗';m.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){m.classList.remove('open');f.src='about:blank';document.body.style.overflow='';}
+  document.addEventListener('click',function(e){
+    var c=e.target.closest('[data-video]');
+    if(c){e.preventDefault();
+      var u=c.getAttribute('data-video'),t=u.match(/instagram\.com\/reel\/([\w-]+)/),k=c.getAttribute('data-tiktok');
+      if(t)open('https://www.instagram.com/reel/'+t[1]+'/embed/',u,'Instagram');
+      else if(k)open('https://www.tiktok.com/embed/v2/'+k,u,'TikTok');
+      else window.open(u,'_blank','noopener');
+      return;}
+    if(e.target===m||e.target.id==='vmodalX')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')close();
+    if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-video][role=button]')){e.preventDefault();e.target.click();}
+  });
+})();
 </script>
 </body>
 </html>

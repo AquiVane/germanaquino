@@ -11,7 +11,7 @@
 - [Shows en todo el país](https://germanaquino.com.ar/shows/en-todo-el-pais): el valor del show no cambia; se suman pasajes, estadía y viáticos.
 
 ## Más
-- [Todos los shows](https://germanaquino.com.ar/shows/)
+- [Todos los shows](https://germanaquino.com.ar/shows)
 - [A Qué Te Suena: branded content musical para marcas](https://germanaquino.com.ar/a-que-te-suena)
 - [Representación artística (casting, teatro, publicidad)](https://germanaquino.com.ar/representacion-artistica)
 - Instagram: https://www.instagram.com/akinogerman

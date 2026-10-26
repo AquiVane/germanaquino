@@ -508,14 +508,14 @@
 <script>
 (function(){
   var m=document.getElementById('vmodal'),f=document.getElementById('vmodalF');
-  function open(src){f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
+  function open(src,tt){if(tt)f.removeAttribute('sandbox');else f.setAttribute('sandbox','allow-scripts allow-same-origin allow-presentation');f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
   function close(){m.classList.remove('open');f.src='about:blank';document.body.style.overflow='';}
   document.addEventListener('click',function(e){
     var c=e.target.closest('[data-video]');
     if(c){e.preventDefault();
       var u=c.getAttribute('data-video'),t=u.match(/instagram\.com\/reel\/([\w-]+)/),k=c.getAttribute('data-tiktok');
       if(t)open('https://www.instagram.com/reel/'+t[1]+'/embed/');
-      else if(k)open('https://www.tiktok.com/embed/v2/'+k);
+      else if(k)open('https://www.tiktok.com/player/v1/'+k+'?autoplay=1&music_info=0&description=0&rel=0&native_context_menu=0&closed_captions=0&timestamp=0',true);
       
       return;}
     if(e.target===m||e.target.id==='vmodalX')close();

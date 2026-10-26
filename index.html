@@ -2165,7 +2165,7 @@
 <script>
 (function(){
   var m=document.getElementById('vmodal'),f=document.getElementById('vmodalF'),v=document.getElementById('vmodalV'),bx=document.getElementById('vmodalBox');
-  function openFrame(src){v.classList.remove('on');bx.style.display='';f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
+  function openFrame(src,tt){v.classList.remove('on');bx.style.display='';if(tt)f.removeAttribute('sandbox');else f.setAttribute('sandbox','allow-scripts allow-same-origin allow-presentation');f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
   function openMp4(src,poster){bx.style.display='none';v.poster=poster||'';v.src=src;v.classList.add('on');m.classList.add('open');document.body.style.overflow='hidden';var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
   function close(){m.classList.remove('open');f.src='about:blank';v.pause();v.removeAttribute('src');v.load();v.classList.remove('on');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
@@ -2173,7 +2173,7 @@
     if(c){e.preventDefault();
       var mp=c.getAttribute('data-mp4'),k=c.getAttribute('data-tiktok');
       if(mp)openMp4(mp,c.getAttribute('data-poster'));
-      else if(k)openFrame('https://www.tiktok.com/embed/v2/'+k);
+      else if(k)openFrame('https://www.tiktok.com/player/v1/'+k+'?autoplay=1&music_info=0&description=0&rel=0&native_context_menu=0&closed_captions=0&timestamp=0',true);
       return;}
     if(e.target===m||e.target.id==='vmodalX')close();
   });

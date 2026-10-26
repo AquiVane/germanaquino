@@ -1,0 +1,8 @@
+# HANDOFF — germanaquino (germanaquino.com.ar)
+
+## 26/10 — Hosting migrado de GitHub Pages a Cloudflare Pages + alarma de clon
+- **Motivo:** los términos de GitHub Pages no permiten usarlo como hosting de un negocio. Pedido de Vaneh.
+- **Ahora:** proyecto **Cloudflare Pages `germanaquino`** (preview `germanaquino.pages.dev`) conectado a `AquiVane/germanaquino`, rama `main`, sin build, salida = raíz. Dominio personalizado: `germanaquino.com.ar` (se borraron los 4 registros A a GitHub; Cloudflare creó el suyo). `www.germanaquino.com.ar` redirige a la raíz con una **Regla de redirección de Cloudflare** (plantilla "Redirigir de WWW a raíz", 301, conserva `?query`) y la zona tiene "Usar siempre HTTPS". GitHub Pages **despublicado**; se borró `CNAME`. Cada push a `main` se publica solo.
+- **Comportamiento:** `/x.html` redirige (308) a `/x`; `/shows/` redirige a `/shows`; una URL inexistente devuelve el `index.html` con 200.
+- **Alarma de clon (pedido de Vaneh, 26/10):** todas las páginas llevan al principio del `<head>` un `<script data-anticlon>` que, si la página se muestra desde un dominio que no es `germanaquino.com.ar` (o su `germanaquino.pages.dev`), corta la carga, reemplaza todo por un cartel "ATENCIÓN: esta NO es la página oficial de Germán Aquino…" con botón a la oficial, y avisa pidiendo `https://germanaquino.com.ar/_clon/<dominio-del-clon>` (se ve como 404 en Analíticas de Cloudflare → rutas más pedidas). **No sacarlo ni tocarlo**; las páginas nuevas tienen que llevarlo.
+- **Canales oficiales:** el pie de cada página dice "Contrataciones solo por los canales de esta web. Nunca pedimos señas por otros medios." (texto aprobado por Vaneh).

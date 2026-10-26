@@ -1,0 +1,13 @@
+# Siempre buscar la versión nueva de las páginas (el navegador revalida en cada visita)
+/
+  Cache-Control: no-cache
+/*.html
+  Cache-Control: no-cache
+/shows
+  Cache-Control: no-cache
+/shows/*
+  Cache-Control: no-cache
+/sitemap.xml
+  Cache-Control: no-cache
+/llms.txt
+  Cache-Control: no-cache

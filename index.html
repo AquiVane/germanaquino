@@ -1722,7 +1722,7 @@
   <div class="video-cat reveal">
     <div class="video-cat-titulo">Canto</div>
     <div class="video-cards-grid">
-      <div class="video-card" data-video="https://www.instagram.com/reel/DOjORPjjYdz/" role="button" tabindex="0">
+      <div class="video-card" data-mp4="videos/german-aquino-cover-angel-jon-secada.mp4" data-poster="videos/german-aquino-cover-angel-jon-secada.jpg" role="button" tabindex="0">
         <div class="video-card-bg" style="background:radial-gradient(ellipse at 35% 65%, rgba(122,92,63,0.38) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(26,18,12,0.88) 100%)"></div>
         <div class="video-card-overlay">
           <div class="video-card-plat">Instagram</div>
@@ -1733,7 +1733,7 @@
           </div>
         </div>
       </div>
-      <div class="video-card" data-video="https://www.instagram.com/reel/Cx9EPH8udM0/" role="button" tabindex="0">
+      <div class="video-card" data-mp4="videos/german-aquino-el-jorobado-de-paris.mp4" data-poster="videos/german-aquino-el-jorobado-de-paris.jpg" role="button" tabindex="0">
         <div class="video-card-bg" style="background:radial-gradient(ellipse at 68% 42%, rgba(122,92,63,0.32) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(20,14,9,0.88) 100%)"></div>
         <div class="video-card-overlay">
           <div class="video-card-plat">Instagram · Pepe Cibrián</div>
@@ -1751,7 +1751,7 @@
   <div class="video-cat reveal">
     <div class="video-cat-titulo">Baile</div>
     <div class="video-cards-grid">
-      <div class="video-card" data-video="https://www.instagram.com/reel/C9Q5xfbMEEt/" role="button" tabindex="0">
+      <div class="video-card" data-mp4="videos/german-aquino-baile-estilos-variados.mp4" data-poster="videos/german-aquino-baile-estilos-variados.jpg" role="button" tabindex="0">
         <div class="video-card-bg" style="background:radial-gradient(ellipse at 50% 70%, rgba(100,72,44,0.38) 0%, transparent 65%), linear-gradient(140deg, rgba(13,13,13,0.97) 0%, rgba(18,13,9,0.88) 100%)"></div>
         <div class="video-card-overlay">
           <div class="video-card-plat">Instagram</div>
@@ -2150,6 +2150,8 @@
 .vmodal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:rgba(0,0,0,.88);padding:16px}
 .vmodal.open{display:flex}
 .vmodal-box{width:min(100%,400px);height:min(90vh,740px);background:#000;border-radius:14px;overflow:hidden}
+.vmodal-video{display:none;max-width:min(94vw,520px);max-height:88vh;width:auto;height:auto;border-radius:14px;background:#000;object-fit:contain}
+.vmodal-video.on{display:block}
 .vmodal-box iframe{width:100%;height:100%;border:0;background:#000}
 .vmodal-x{position:absolute;top:12px;right:16px;background:none;border:0;color:#fff;font-size:36px;line-height:1;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
 .vmodal-ext{color:#fff;font-size:14px;text-decoration:underline}
@@ -2157,26 +2159,27 @@
 
 <div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Video">
   <button class="vmodal-x" id="vmodalX" aria-label="Cerrar video">&times;</button>
-  <div class="vmodal-box"><iframe id="vmodalF" title="Video de Germán Aquino" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+  <video id="vmodalV" class="vmodal-video" controls playsinline preload="metadata" controlsList="nodownload"></video>
+  <div class="vmodal-box" id="vmodalBox"><iframe id="vmodalF" title="Video de Germán Aquino" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
 </div>
 <script>
 (function(){
-  var m=document.getElementById('vmodal'),f=document.getElementById('vmodalF');
-  function open(src){f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
-  function close(){m.classList.remove('open');f.src='about:blank';document.body.style.overflow='';}
+  var m=document.getElementById('vmodal'),f=document.getElementById('vmodalF'),v=document.getElementById('vmodalV'),bx=document.getElementById('vmodalBox');
+  function openFrame(src){v.classList.remove('on');bx.style.display='';f.src=src;m.classList.add('open');document.body.style.overflow='hidden';}
+  function openMp4(src,poster){bx.style.display='none';v.poster=poster||'';v.src=src;v.classList.add('on');m.classList.add('open');document.body.style.overflow='hidden';var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
+  function close(){m.classList.remove('open');f.src='about:blank';v.pause();v.removeAttribute('src');v.load();v.classList.remove('on');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
-    var c=e.target.closest('[data-video]');
+    var c=e.target.closest('[data-video],[data-mp4]');
     if(c){e.preventDefault();
-      var u=c.getAttribute('data-video'),t=u.match(/instagram\.com\/reel\/([\w-]+)/),k=c.getAttribute('data-tiktok');
-      if(t)open('https://www.instagram.com/reel/'+t[1]+'/embed/');
-      else if(k)open('https://www.tiktok.com/embed/v2/'+k);
-      
+      var mp=c.getAttribute('data-mp4'),k=c.getAttribute('data-tiktok');
+      if(mp)openMp4(mp,c.getAttribute('data-poster'));
+      else if(k)openFrame('https://www.tiktok.com/embed/v2/'+k);
       return;}
     if(e.target===m||e.target.id==='vmodalX')close();
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape')close();
-    if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-video][role=button]')){e.preventDefault();e.target.click();}
+    if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-video][role=button],[data-mp4][role=button]')){e.preventDefault();e.target.click();}
   });
 })();
 </script>
